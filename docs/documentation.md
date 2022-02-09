@@ -12,10 +12,12 @@ The main script `MetaMEP.m` in `src` takes as input (in this order):
 $$\begin{align}
 \mathbf{S}\boldsymbol{\nu} = \boldsymbol{b}
 \end{align}$$
+
 - `lb` and `ub` the lower and upper bounds of the range of variability of the fluxes
 $$\begin{align}
 lb\left(i\right) < \nu_{i} < ub\left(i\right)
 \end{align}$$
+
 - `av_exp`: the experimental means of the measured fluxes;
 - `va_exp`: the experimental variances (i.e. the square of the experimental errors) of the measured fluxes;
 - `idx_exp`: the indices of the measured fluxes as they appear in the columns of the stoichiometric matrix;
