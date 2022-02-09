@@ -68,7 +68,7 @@ P\left(\nu_{i}\right)=\frac{1}{Z}e^{-\frac{1}{2\sigma_{i}}\left(\nu_{i} - \mu_{i
 The `data` folder contains two files, `nanchen_2006.mat` and `schuetz_2012.mat`, containing the datasets used in [arXiv:2104.02594](https://arxiv.org/abs/2104.02594), i.e. the metabolic models and the experimental data. 
 
 The main script `Run_inference.m` launches `MetaMEP.m` on the two datasets to get 
-+ the Lagrange multipliers $c$ and &gamma;;
++ the Lagrange multipliers **c** and &gamma;;
 + the parameters of the approximate flux densities.
 As an example, we report a function to plot the marginal probabilities of non-measured fluxes.
 
