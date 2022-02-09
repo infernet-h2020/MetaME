@@ -8,47 +8,59 @@
 
 ## Usage
 The main script `MetaMEP.m` in `src` takes as input (in this order):
-- `S` and `b`: the stoichiometric matrix and the vector constraining the fluxes $\boldsymbol{\nu}$
-$$\begin{align}
-\mathbf{S}\boldsymbol{\nu} = \boldsymbol{b}
-\end{align}$$
+- `S` and `b`: the stoichiometric matrix and the vector constraining the fluxes &nu;
+
+<!-- $$\begin{align}
+\mathbf{S}\boldsymbol{v} = \boldsymbol{b}
+\end{align}$$ --> 
+
+<div align="center"><img style="background: transparent;" src="https://render.githubusercontent.com/render/math?math=%5Cmathbf%7BS%7D%5Cboldsymbol%7Bv%7D%20%3D%20%5Cboldsymbol%7Bb%7D"></div>
 
 - `lb` and `ub` the lower and upper bounds of the range of variability of the fluxes
-$$\begin{align}
-lb\left(i\right) < \nu_{i} < ub\left(i\right)
-\end{align}$$
+
+<!-- $$\begin{align}
+lb\left(i\right) < v_{i} < ub\left(i\right)
+\end{align}$$ --> 
+
+<div align="center"><img style="background: transparent;" src="https://render.githubusercontent.com/render/math?math=lb%5Cleft(i%5Cright)%20%3C%20v_%7Bi%7D%20%3C%20ub%5Cleft(i%5Cright)"></div>
 
 - `av_exp`: the experimental means of the measured fluxes;
 - `va_exp`: the experimental variances (i.e. the square of the experimental errors) of the measured fluxes;
 - `idx_exp`: the indices of the measured fluxes as they appear in the columns of the stoichiometric matrix;
 - `type` specifies how to constrain the experimental variances; choose between 
     - `unique` (recommended) infers a unique Lagrange multiplier which ensures the fit of the average experimental variance;
-    - `fixed` uses a fixed value for the Lagrange multiplier $\gamma$  (no fit of the experimental variances is performed);
+    - `fixed` uses a fixed value for the Lagrange multiplier &gamma;  (no fit of the experimental variances is performed);
     - `adapt` infers as many Lagrange multipliers as the measured fluxes.
-- `gamma0`: initial value(s) for the $\gamma$ Lagrange multiplier(s) (ex. $10^5$).
+- `gamma0`: initial value(s) for the &gamma; Lagrange multiplier(s) (ex. 1e5).
 
 EP parameters: 
-- `precision`: precision required to the EP update equations to converge (ex. $10^{-4}$);
-- `precision` $c$: precision required to the fitting of the experimental means (ex. $10^{-5}$);
-- `precision` $\gamma$: precision required to the fitting of the (average) experimental variances (ex. $10^{-5}$);
-- `damp`: damping used within the update of the EP equations (ex. $0.7$);
-- `max_iter`: the maxinum number of iterations (ex. $5\cdot 10^{4}$);
-- `minvar` and `maxvar`: the minimum and maximum allowed value for the approximate variances, respectively (ex. $10^{-50}$ and $10^{50}$).
+- `precision`: precision required to the EP update equations to converge (ex. 1e-4);
+- `precision` *c*: precision required to the fitting of the experimental means (ex. 1e-5);
+- `precision` &gamma;: precision required to the fitting of the (average) experimental variances (ex. 1e-5);
+- `damp`: damping used within the update of the EP equations (ex. 0.7);
+- `max_iter`: the maxinum number of iterations (ex. 5e4);
+- `minvar` and `maxvar`: the minimum and maximum allowed value for the approximate variances, respectively (ex. 1e-50 and 1e50).
 
 The routine returns:
-+ $\mu$ and $\sigma$: the parameters of the truncated Gaussian densities approximating each $\nu_{i}$ flux marginal probability:
-$$\begin{align}
++ &mu; and &sigma;: the parameters of the truncated Gaussian densities approximating each &nu;<sub>i</sub> flux marginal probability:
+<!-- $$\begin{align}
 P\left(\nu_{i}\right)=\frac{1}{Z}e^{-\frac{1}{2\sigma_{i}}\left(\nu_{i} - \mu_{i}\right)^{2}}\mathbb{I}\left[lb\left(i\right) < \nu_{i} < ub\left(i\right)\right]
-\end{align}$$
-+ `av` and `va`: the mean and the variance of each flux $\nu_{i}$, that is
-$$\begin{align}
+\end{align}$$ --> 
+
+<div align="center"><img style="background: transparent;" src="https://render.githubusercontent.com/render/math?math=P%5Cleft(%5Cnu_%7Bi%7D%5Cright)%3D%5Cfrac%7B1%7D%7BZ%7De%5E%7B-%5Cfrac%7B1%7D%7B2%5Csigma_%7Bi%7D%7D%5Cleft(%5Cnu_%7Bi%7D%20-%20%5Cmu_%7Bi%7D%5Cright)%5E%7B2%7D%7D%5Cmathbb%7BI%7D%5Cleft%5Blb%5Cleft(i%5Cright)%20%3C%20%5Cnu_%7Bi%7D%20%3C%20ub%5Cleft(i%5Cright)%5Cright%5D"></div>
+
++ `av` and `va`: the mean and the variance of each flux &nu;<sub>i</sub>, that is
+<!-- $$\begin{align}
 <\nu_{i}>_{P}\qquad<\nu_{i}^{2}>_{P}-<\nu_{i}>_{P}^{2}
-\end{align}$$
+\end{align}$$ --> 
+
+<div align="center"><img style="background: transparent;" src="https://render.githubusercontent.com/render/math?math=%3C%5Cnu_%7Bi%7D%3E_%7BP%7D%5Cqquad%3C%5Cnu_%7Bi%7D%5E%7B2%7D%3E_%7BP%7D-%3C%5Cnu_%7Bi%7D%3E_%7BP%7D%5E%7B2%7D"></div>
+
 + `a` and `d`: the means and variances of the univariate Gaussian of the approximation;
-+ `c`: the coefficient or Lagrange multipliers $c$ ensuring the fit of the experimental means;
-+ `G`: the $\gamma$ Lagrange multipliers ensuring the fit of the (average) experimental variances;
-+ $\boldsymbol{\nu}^{e}$: the set of auxiliary fluxes at convergence (their values are *exactly* the experimental means);
-+ $\Sigma$: the covariance matrix of the fluxes $\boldsymbol{\nu}$;
++ `c`: the coefficient or Lagrange multipliers **c** ensuring the fit of the experimental means;
++ `G`: the &gamma; Lagrange multipliers ensuring the fit of the (average) experimental variances;
++ &nu;<sup>e</sup> : the set of auxiliary fluxes at convergence (their values are *exactly* the experimental means);
++ &Sigma;: the covariance matrix of the fluxes &nu;;
 + H: the entropy of the multivariate Gaussian approximating the joint flux distribution.
 
 ## Example
@@ -56,12 +68,12 @@ $$\begin{align}
 The `data` folder contains two files, `nanchen_2006.mat` and `schuetz_2012.mat`, containing the datasets used in [arXiv:2104.02594](https://arxiv.org/abs/2104.02594), i.e. the metabolic models and the experimental data. 
 
 The main script `Run_inference.m` launches `MetaMEP.m` on the two datasets to get 
-+ the Lagrange multipliers $c$ and $\gamma$;
++ the Lagrange multipliers $c$ and &gamma;;
 + the parameters of the approximate flux densities.
 As an example, we report a function to plot the marginal probabilities of non-measured fluxes.
 
 While preparing the input data one should note that:
-+ Any fixed flux should be removed from the columns of the stoichiometric matrix. For this data, the glucose uptake has been fixed to the experimental mean (the values are reported in the `.mat` files) and, therefore, the associated flux has been removed from $\mathbf{S}$ and encoded into the constant term $\boldsymbol{b}$;
++ Any fixed flux should be removed from the columns of the stoichiometric matrix. For this data, the glucose uptake has been fixed to the experimental mean (the values are reported in the `.mat` files) and, therefore, the associated flux has been removed from **S** and encoded into the constant term **b**;
 + The lower and upper bounds of the fluxes should be those obtained from Flux Variability Analysis (those in `nanchen_2006.mat` and `schuetz_2012.mat` have been already pre-processed).
 
 
