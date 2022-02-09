@@ -30,7 +30,7 @@ P\left( \boldsymbol{\nu} \right) = \frac{1}{Z}\mathbb{I}\left[\boldsymbol{\nu} \
 
 <div align="center"><img style="background: transparent;" src="https://render.githubusercontent.com/render/math?math=P%5Cleft(%20%5Cboldsymbol%7B%5Cnu%7D%20%5Cright)%20%3D%20%5Cfrac%7B1%7D%7BZ%7D%5Cmathbb%7BI%7D%5Cleft%5B%5Cboldsymbol%7B%5Cnu%7D%20%5Cin%20%5COmega%5Cright%5D%20e%5E%7B%5Cboldsymbol%7Bc%7D%5E%7Bt%7D%5Cboldsymbol%7B%5Cnu%7D%7D"></div>
 
-The two distributions are hard to compute as the computation of the partition function *Z* is intractable. Therefore, we resort to an analytic approximation provided by Expectation Propagation which allows us to obtain a multivariate Gaussian density associated with the joint distribution of the fluxes, and a set of univariate truncated normal distributions approximating the marginal flux probabilities. We stress that within this framework it is also possible to estimate the unknown Lagrange multipliers *c* and &gamma;with no extra computation. See the works in the Reference section for a more detailed description of the model.
+The two distributions are hard to compute as the computation of the partition function *Z* is intractable. Therefore, we resort to an analytic approximation provided by Expectation Propagation which allows us to obtain a multivariate Gaussian density associated with the joint distribution of the fluxes, and a set of univariate truncated normal distributions approximating the marginal flux probabilities. We stress that within this framework it is also possible to estimate the unknown Lagrange multipliers *c* and &gamma; with no extra computation. See the works in the Reference section for a more detailed description of the model.
 
 ## Usage
 The main script `MetaMEP.m` in `src` takes as input (in this order):
@@ -67,8 +67,8 @@ EP parameters:
 - `max_iter`: the maxinum number of iterations (ex. 5e4);
 - `minvar` and `maxvar`: the minimum and maximum allowed value for the approximate variances, respectively (ex. 1e-50 and 1e50).
 
-The routine returns:
-+ &mu; and &sigma;: the parameters of the truncated Gaussian densities approximating each &nu;<sub>i</sub> flux marginal probability:
+The m-function returns:
++ &mu; and &sigma;: the parameters of the truncated Gaussian densities approximating each flux marginal probability:
 <!-- $$\begin{align}
 P\left(\nu_{i}\right)=\frac{1}{Z}e^{-\frac{1}{2\sigma_{i}}\left(\nu_{i} - \mu_{i}\right)^{2}}\mathbb{I}\left[lb\left(i\right) < \nu_{i} < ub\left(i\right)\right]
 \end{align}$$ --> 
