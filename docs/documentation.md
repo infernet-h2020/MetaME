@@ -111,6 +111,6 @@ All the mathematical and implementation details (as well as a deep analysis of t
 
 Please, cite this work if you use (even partially) this code.
 
-More about Expectation Propagation for metabolic modelling in:
+More about Expectation Propagation for metabolic modeling in:
 + A Braunstein, A Muntoni, A Pagnani. *An analytic approximation of the feasible space of metabolic networks.* Nature Communications 8, Article number: 14915 (2017) [doi:10.1038/ncomms14915](https://www.nature.com/articles/ncomms14915)
 + https://github.com/anna-pa-m/Metabolic-EP
