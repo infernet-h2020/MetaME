@@ -3,7 +3,7 @@
 
 ## Description
 
-MetaME is a MATLAB implementation of the Expectation Propagation approximation of metabolic fluxes distributions when partial experimental information is available. 
+MetaME is a MATLAB implementation of the Expectation Propagation approximation of metabolic flux distributions when (partial) experimental information is available. 
 The method provides both the approximate flux marginals and the Lagrange multipliers enforcing the experimental constraints.
 
 This package contains the main script and the datasets used in 
