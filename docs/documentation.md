@@ -7,7 +7,7 @@
 
 ## Overview
 This package aims at determining the least possible constrained model (according to the Maximum Entropy principle) of metabolic fluxes under particular conditions. More precisely: 
-+ fluxes satisfy a mass-balance relationship and they take value from a limited range of variability (i.e. they belong to the feasible space &Omega;);
++ fluxes satisfy a mass-balance relationship, and they take value from a limited range of variability (i.e. they belong to the feasible space &Omega;);
 + their statistics mirror the experimental evidence encoded as observed means and variances of a sub-set of fluxes, i.e. the measured fluxes.
 
 The resulting model is
@@ -24,13 +24,12 @@ where
 
 Note that the two sets of fluxes interact because of the presence of &gamma;;
 Marginalizing over &nu;<sup>e</sup>, one gets
-<!-- $$\begin{align}
-P\left( \boldsymbol{\nu} \right) = \frac{1}{Z}\mathbb{I}\left[\boldsymbol{\nu} \in \Omega\right] e^{\boldsymbol{c}^{t}\boldsymbol{\nu}}
-\end{align}$$ --> 
+<!-- $\begin{align}
+P\left( \boldsymbol{\nu} \right) \propto \mathbb{I}\left[\boldsymbol{\nu} \in \Omega\right] e^{\boldsymbol{c}^{t}\boldsymbol{\nu}}
+\end{align}$ --> <img style="transform: translateY(0.1em); background: transparent; " src="https://render.githubusercontent.com/render/math?math=%5Cbegin%7Balign%7D%0AP%5Cleft(%20%5Cboldsymbol%7B%5Cnu%7D%20%5Cright)%20%5Cpropto%20%5Cmathbb%7BI%7D%5Cleft%5B%5Cboldsymbol%7B%5Cnu%7D%20%5Cin%20%5COmega%5Cright%5D%20e%5E%7B%5Cboldsymbol%7Bc%7D%5E%7Bt%7D%5Cboldsymbol%7B%5Cnu%7D%7D%0A%5Cend%7Balign%7D">
 
-<div align="center"><img style="background: transparent;" src="https://render.githubusercontent.com/render/math?math=P%5Cleft(%20%5Cboldsymbol%7B%5Cnu%7D%20%5Cright)%20%3D%20%5Cfrac%7B1%7D%7BZ%7D%5Cmathbb%7BI%7D%5Cleft%5B%5Cboldsymbol%7B%5Cnu%7D%20%5Cin%20%5COmega%5Cright%5D%20e%5E%7B%5Cboldsymbol%7Bc%7D%5E%7Bt%7D%5Cboldsymbol%7B%5Cnu%7D%7D"></div>
 
-The two distributions are hard to compute because the computation of the partition function, i.e. the normalization factor, *Z* is intractable. Therefore, we resort to an analytic approximation provided by Expectation Propagation which allows us to obtain a multivariate Gaussian density associated with the joint distribution of the fluxes, and a set of univariate truncated normal distributions approximating the marginal flux probabilities. We stress that within this framework it is also possible to estimate the unknown Lagrange multipliers *c* and &gamma; with no extra computation. See the works in the Reference section for a more detailed description of the model.
+The two distributions are hard to compute because the computation of the partition function, i.e. the normalization factor, *Z* is intractable. Therefore, we resort to an analytic approximation provided by Expectation Propagation which allows us to obtain a multivariate Gaussian density associated with the flux joint distribution and a set of univariate truncated normal distributions approximating the marginal flux probabilities. We stress that within this framework it is also possible to estimate the unknown Lagrange multipliers *c* and &gamma; with no extra (heavy) computation. See the works in the Reference section for a more detailed description of the model.
 
 ## Usage
 The main script `MetaMEP.m` in `src` takes as input (in this order):
